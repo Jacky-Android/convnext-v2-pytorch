@@ -1,5 +1,8 @@
+#ConvNeXt-V2 pytorch 复现
+
 ## 代码使用简介
 [代码来源](https://github.com/facebookresearch/ConvNeXt-V2)
+
 [论文ConvNeXt V2: Co-designing and Scaling ConvNets with Masked Autoencoders](https://arxiv.org/abs/2301.00808)
 
 
