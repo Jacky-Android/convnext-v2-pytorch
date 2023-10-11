@@ -1,5 +1,6 @@
 # ConvNeXt-V2 pytorch 复现
-
+# 2023年10月11日更新
+FCMAE(fully convolutional masked autoencoder framework)
 ## 代码使用简介
 [参考代码](https://github.com/facebookresearch/ConvNeXt-V2)
 
