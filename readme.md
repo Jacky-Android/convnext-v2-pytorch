@@ -13,6 +13,18 @@ FCMAE 框架与传统的掩码自编码器（MAE）框架相比，有两个优�
 
 torch.Size([]) torch.Size([1, 3072, 7, 7]) torch.Size([1, 49])
 ## FCMAE训练文件不定期更新
+### torchinfo输出代码
+```python
+from fcmae_model import convnextv2_pico
+from torchinfo import summary
+import torch
+
+#use pico
+models = convnextv2_pico().cuda()
+x = torch.randn([1,3,224,224]).cuda()
+print(models(x)[0],models(x)[1].shape,models(x)[2].shape)
+out = summary(models, (1, 3, 224,224))
+```
 ### 模型torchinfo输出
 ```python
 ===============================================================================================
