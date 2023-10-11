@@ -1,6 +1,64 @@
 # ConvNeXt-V2 pytorch 复现
+[`训练Training..........`](https://github.com/Jacky-Android/convnext-v2-pytorch/tree/main#%E4%BB%A3%E7%A0%81%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B)
 # 2023年10月11日更新
-FCMAE(fully convolutional masked autoencoder framework)
+## 加入FCMAE
+全卷积掩码自编码器（FCMAE）框架是一种基于卷积神经网络的自监督学习方法，它的思想是在输入图像上随机掩盖一些区域，然后让模型尝试恢复被掩盖的部分。这样可以迫使模型学习到图像的全局和局部特征，从而提高其泛化能力。
+
+FCMAE 框架与传统的掩码自编码器（MAE）框架相比，有两个优势：一是它使用了全卷积结构，而不是使用全连接层来生成掩码和重建图像，这样可以减少参数量和计算量，同时保持空间信息；二是它使用了多尺度掩码策略，而不是使用固定大小的掩码，这样可以增加模型对不同尺度特征的感知能力。
+[FCMAE(fully convolutional masked autoencoder framework)](https://github.com/Jacky-Android/convnext-v2-pytorch/blob/main/fcmae_model.py)
+
+![image](https://github.com/Jacky-Android/convnext-v2-pytorch/assets/55181594/cb3f3944-c0b6-4bba-86b3-d38f75fadcc6)
+
+输入tensor[1,3,224,224],返回loss,pred,mask
+
+torch.Size([]) torch.Size([1, 3072, 7, 7]) torch.Size([1, 49])
+## 训练文件不定期更新
+### 模型torchinfo输出
+```python
+===============================================================================================
+Layer (type:depth-idx)                        Output Shape              Param #
+===============================================================================================
+FCMAE                                         --                        512
+├─SparseConvNeXtV2: 1-1                       [1, 512, 7, 7]            --
+│    └─ModuleList: 2-7                        --                        (recursive)
+│    │    └─Sequential: 3-1                   [1, 64, 56, 56]           3,264
+│    └─ModuleList: 2-8                        --                        (recursive)
+│    │    └─Sequential: 3-2                   [1, 64, 56, 56]           73,856
+│    └─ModuleList: 2-7                        --                        (recursive)
+│    │    └─Sequential: 3-3                   [1, 128, 28, 28]          33,024
+│    └─ModuleList: 2-8                        --                        (recursive)
+│    │    └─Sequential: 3-4                   [1, 128, 28, 28]          278,784
+│    └─ModuleList: 2-7                        --                        (recursive)
+│    │    └─Sequential: 3-5                   [1, 256, 14, 14]          131,584
+│    └─ModuleList: 2-8                        --                        (recursive)
+│    │    └─Sequential: 3-6                   [1, 256, 14, 14]          3,245,568
+│    └─ModuleList: 2-7                        --                        (recursive)
+│    │    └─Sequential: 3-7                   [1, 512, 7, 7]            525,312
+│    └─ModuleList: 2-8                        --                        (recursive)
+│    │    └─Sequential: 3-8                   [1, 512, 7, 7]            4,260,864
+├─Conv2d: 1-2                                 [1, 512, 7, 7]            262,656
+├─Sequential: 1-3                             [1, 512, 7, 7]            --
+│    └─Block: 2-9                             [1, 512, 7, 7]            --
+│    │    └─Conv2d: 3-9                       [1, 512, 7, 7]            25,600
+│    │    └─LayerNorm: 3-10                   [1, 7, 7, 512]            1,024
+│    │    └─Linear: 3-11                      [1, 7, 7, 2048]           1,050,624
+│    │    └─GELU: 3-12                        [1, 7, 7, 2048]           --
+│    │    └─GRN: 3-13                         [1, 7, 7, 2048]           4,096
+│    │    └─Linear: 3-14                      [1, 7, 7, 512]            1,049,088
+│    │    └─Identity: 3-15                    [1, 512, 7, 7]            --
+├─Conv2d: 1-4                                 [1, 3072, 7, 7]           1,575,936
+===============================================================================================
+Total params: 12,521,792
+Trainable params: 12,521,792
+Non-trainable params: 0
+Total mult-adds (M): 235.88
+===============================================================================================
+Input size (MB): 0.60
+Forward/backward pass size (MB): 94.93
+Params size (MB): 50.09
+Estimated Total Size (MB): 145.62
+===============================================================================================
+```
 ## 代码使用简介
 [参考代码](https://github.com/facebookresearch/ConvNeXt-V2)
 
