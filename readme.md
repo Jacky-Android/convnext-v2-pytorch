@@ -12,7 +12,8 @@ FCMAE 框架与传统的掩码自编码器（MAE）框架相比，有两个优�
 输入tensor[1,3,224,224],返回loss,pred,mask
 
 torch.Size([]) torch.Size([1, 3072, 7, 7]) torch.Size([1, 49])
-## FCMAE训练文件不定期更新
+## FCMAE训练文件更新
+[pretrain.py](https://github.com/Jacky-Android/convnext-v2-pytorch/blob/main/pretrain.py)
 ### torchinfo输出代码
 ```python
 from fcmae_model import convnextv2_pico
