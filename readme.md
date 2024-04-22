@@ -129,3 +129,6 @@ Estimated Total Size (MB): 145.62
 | ConvNeXt V2-L | 384x384 | 88.2 | 198M  | 101.1G  | [model](https://dl.fbaipublicfiles.com/convnext/convnextv2/im22k/convnextv2_large_22k_384_ema.pt)|
 | ConvNeXt V2-H | 384x384 | 88.7 | 660M  | 337.9G  | [model](https://dl.fbaipublicfiles.com/convnext/convnextv2/im22k/convnextv2_huge_22k_384_ema.pt)|
 | ConvNeXt V2-H | 512x512 | 88.9 | 660M  | 600.8G  | [model](https://dl.fbaipublicfiles.com/convnext/convnextv2/im22k/convnextv2_huge_22k_512_ema.pt)|
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Jacky-Android/convnext-v2-pytorch&type=Date)](https://star-history.com/#Jacky-Android/convnext-v2-pytorch&Date)
