@@ -1,4 +1,4 @@
-# ConvNeXt-V2 pytorch 复现
+# ConvNeXt-V2 pytorch 复现（提醒：这是复现，重要参考官方代码）
 [`训练Training..........`](https://github.com/Jacky-Android/convnext-v2-pytorch/tree/main#%E4%BB%A3%E7%A0%81%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B)
 # 2023年10月11日更新
 ## 加入FCMAE
